@@ -1,19 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class TasksFilter extends Component{
-    render() {
-        return (
-            <ul className="filters">
-                <li>
-                    <button className="selected">All</button>
+const TasksFilter = (props) => {
+    const {filterList, setFilter, isPressed} = props
+    return (
+        <ul className="filters">
+            {filterList.map(i =>
+                <li key={i}>
+                    <button
+                        onClick={() => setFilter(i)}
+                        className={isPressed === i ? 'selected' : ''}>
+                        {i}
+                    </button>
                 </li>
-                <li>
-                    <button>Active</button>
-                </li>
-                <li>
-                    <button>Completed</button>
-                </li>
-            </ul>
-        );
-    }
+            )}
+        </ul>
+    );
 }
+
+TasksFilter.defaultProps = {
+    setFilter: () => {}
+}
+
+export default TasksFilter;
