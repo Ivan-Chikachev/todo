@@ -72,27 +72,29 @@ export default class App extends Component {
 
       const countItems = this.state.todoData.filter((i) => i.done === false).length;
       return (
-            <section className='todoapp'>
-                <header className="header">
-                    <h1>todos</h1>
-                    <NewTaskForm addTask={this.addTask}/>
-                </header>
-                <section className="main">
-                    <TaskList
-                        addTask={this.addTask}
-                        deleteTask={this.deleteTask}
-                        onTaskClick={this.onTaskClick}
-                        todoData={this.state.todoData}
-                        filterMap={FILTER_MAP}
-                        filterName={this.state.filterTasks}/>
-                    <Footer
-                        setFilter={this.setFilter}
-                        isPressed={this.state.filterTasks}
-                        clearTasks={this.clearTasks}
-                        countItems={countItems}
-                        filterList={FILTER_NAMES}/>
-                </section>
-            </section>
+        <section className="todoapp">
+          <header className="header">
+            <h1>todos</h1>
+            <NewTaskForm addTask={this.addTask} />
+          </header>
+          <section className="main">
+            <TaskList
+              addTask={this.addTask}
+              deleteTask={this.deleteTask}
+              onTaskClick={this.onTaskClick}
+              todoData={this.state.todoData}
+              filterMap={FILTER_MAP}
+              filterName={this.state.filterTasks}
+            />
+            <Footer
+              setFilter={this.setFilter}
+              isPressed={this.state.filterTasks}
+              clearTasks={this.clearTasks}
+              countItems={countItems}
+              filterList={FILTER_NAMES}
+            />
+          </section>
+        </section>
       );
     }
 }
