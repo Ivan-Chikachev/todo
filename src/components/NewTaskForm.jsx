@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 export default class NewTaskForm extends Component {
     state = {
         label: ''
+    }
+
+    static propTypes = {
+        addTask: PropTypes.func
+    }
+
+    static defaultProps = {
+        addTask: () => {}
     }
 
     onLabelChange = (e) => {
@@ -30,7 +39,3 @@ export default class NewTaskForm extends Component {
         );
     }
 }
-NewTaskForm.defaultProps = {
-    addTask: () => {}
-}
-

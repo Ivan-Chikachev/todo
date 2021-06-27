@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const Task = (props) => {
@@ -35,6 +36,14 @@ const Task = (props) => {
 Task.defaultProps = {
     deleteTask: () => {},
     onTaskClick: () => {}
+}
+
+Task.porpTypes = {
+    done: PropTypes.bool.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    deleteTask: PropTypes.func,
+    onTaskClick: PropTypes.func
 }
 
 export default Task;

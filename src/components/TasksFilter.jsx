@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TasksFilter = (props) => {
     const {filterList, setFilter, isPressed} = props
@@ -19,6 +20,12 @@ const TasksFilter = (props) => {
 
 TasksFilter.defaultProps = {
     setFilter: () => {}
+}
+
+TasksFilter.propTypes = {
+    filterList: PropTypes.arrayOf(PropTypes.string),
+    setFilter: PropTypes.func,
+    isPressed: PropTypes.string
 }
 
 export default TasksFilter;
