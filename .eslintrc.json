@@ -1,22 +1,22 @@
 //{
+//  "env": {
+//    "browser": true,
+//    "es2021": true
+//  },
 //  "extends": [
-//    "airbnb",
-//    "prettier",
-//    "prettier/react"
+//    "plugin:react/recommended",
+//    "airbnb"
 //  ],
-//  "plugins": [
-//    "prettier"
-//  ],
-//  "parser": "babel-eslint",
 //  "parserOptions": {
 //    "ecmaFeatures": {
 //      "jsx": true
-//    }
+//    },
+//    "ecmaVersion": 12,
+//    "sourceType": "module"
 //  },
-//  "env": {
-//    "browser": true,
-//    "node": true
-//  },
+//  "plugins": [
+//    "react"
+//  ],
 //  "rules": {
 //    "consistent-return": 0,
 //    "jsx-a11y/control-has-associated-label": 0,
@@ -36,11 +36,7 @@
 //    "import/no-named-as-default": 2,
 //    "comma-dangle": 0,
 //    "indent": [
-//      2,
-//      2,
-//      {
-//        "SwitchCase": 1
-//      }
+//      "error", 4
 //    ],
 //    "no-console": 0,
 //    "no-alert": 0,

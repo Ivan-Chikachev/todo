@@ -1,33 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TasksFilter = (props) => {
-  const { filterList, setFilter, isPressed } = props;
-  return (
+const TasksFilter = ({ filterList, setFilter, isPressed }) => {
+    return (
     <ul className="filters">
-      {filterList.map((i) => (
+        {filterList.map((i) => (
         <li key={i}>
-          <button
+            <button
             onClick={() => setFilter(i)}
             className={isPressed === i ? 'selected' : ''}
           >
             {i}
           </button>
-        </li>
+          </li>
       ))}
-    </ul>
+      </ul>
   );
 };
 
 TasksFilter.defaultProps = {
-  setFilter: () => {
+    setFilter: () => {
   }
 };
 
 TasksFilter.propTypes = {
-  filterList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setFilter: PropTypes.func,
-  isPressed: PropTypes.string.isRequired
+    filterList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    setFilter: PropTypes.func,
+    isPressed: PropTypes.string.isRequired
 };
 
 export default TasksFilter;
