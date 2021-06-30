@@ -1,26 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TasksFilter = ({ filterList, setFilter, isPressed }) => {
-    return (
-    <ul className="filters">
-        {filterList.map((i) => (
-        <li key={i}>
-            <button
-            onClick={() => setFilter(i)}
-            className={isPressed === i ? 'selected' : ''}
-          >
-            {i}
-          </button>
-          </li>
-      ))}
-      </ul>
-  );
-};
+const TasksFilter = ({ filterList, setFilter, isPressed }) => (
+  <ul className="filters">
+      {filterList.map((i) => (
+            <li key={i}>
+                <button
+                    onClick={() => setFilter(i)}
+                    className={isPressed === i ? 'selected' : ''}
+              >
+                    {i}
+              </button>
+        </li>
+        ))}
+    </ul>
+);
 
 TasksFilter.defaultProps = {
     setFilter: () => {
-  }
+    }
 };
 
 TasksFilter.propTypes = {

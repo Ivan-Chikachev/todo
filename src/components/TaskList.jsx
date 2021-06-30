@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Task from './Task';
 
-const TaskList = ({todoData, filterMap, filterName, deleteTask, onTaskClick}) => {
-    return (
-        <ul className="todo-list">
-            {todoData
-                .filter(filterMap[filterName])
-                .map((task) => (
-                    <Task
-                        {...task}
-                        key={task.id}
-                        deleteTask={deleteTask}
-                        onTaskClick={onTaskClick}
-                    />
-                ))}
-        </ul>
-    );
-};
+const TaskList = ({
+    todoData, filterMap, filterName, deleteTask, onTaskClick
+}) => (
+    <ul className="todo-list">
+        {todoData
+            .filter(filterMap[filterName])
+            .map((task) => (
+                <Task
+                    {...task}
+                    key={task.id}
+                    deleteTask={deleteTask}
+                    onTaskClick={onTaskClick}
+              />
+            ))}
+  </ul>
+);
 TaskList.defaultProps = {
     filterMap: () => {
     },
