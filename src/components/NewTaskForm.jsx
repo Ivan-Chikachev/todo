@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 
 export default class NewTaskForm extends Component {
   state = {
-    label: ''
+    label: '',
   };
 
   static propTypes = {
-    addTask: PropTypes.func
+    addTask: PropTypes.func,
   };
 
   static defaultProps = {
     addTask: () => {
-    }
+    },
   };
 
   onLabelChange = (e) => {
     this.setState({
-      label: e.target.value
+      label: e.target.value,
     });
   };
 
