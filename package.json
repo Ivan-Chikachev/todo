@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
-    "lint:fix": "eslint --ext .jsx ./src --fix",
+    "lint:fix": "eslint --ext .jsx --ext .js ./src --fix",
     "precommit": "lint-staged"
   },
   "eslintConfig": {
