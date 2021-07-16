@@ -1,13 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class TaskDescription extends Component {
     state = {
         counter: 0,
-        isStart: true
+        isStart: true,
+    }
+
+    static propTypes = {
+        totalSec: PropTypes.number.isRequired,
     }
 
     componentDidMount() {
-        this.setState({counter: this.props.totalSec});
+        this.setState({ counter: this.props.totalSec });
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -35,15 +40,15 @@ export default class TaskDescription extends Component {
     }
 
     setCounter = (count) => {
-        this.setState({counter: --count});
+        this.setState({ counter: --count });
     }
 
     playTimer = () => {
-        this.setState({isStart: true});
+        this.setState({ isStart: true });
     }
 
     pauseTimer = () => {
-        this.setState({isStart: false});
+        this.setState({ isStart: false });
     }
 
     padTime = (time) => (String(time).length === 1 ? `0${time}` : `${time}`);
@@ -55,11 +60,11 @@ export default class TaskDescription extends Component {
     };
 
     render() {
-        const {counter} = this.state;
+        const { counter } = this.state;
         return (
             <span className="description">
-                <button className="icon icon-play" onClick={this.playTimer}/>
-                <button className="icon icon-pause" onClick={this.pauseTimer}/>
+                <button className="icon icon-play" onClick={this.playTimer} />
+                <button className="icon icon-pause" onClick={this.pauseTimer} />
                 {this.format(counter)}
             </span>
         );

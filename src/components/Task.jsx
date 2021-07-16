@@ -26,16 +26,16 @@ const Task = ({
                 />
                 <label htmlFor={id}>
                     <span className="title">{name}</span>
-                    <TaskDescription totalSec={formatToSec(min, sec)}/>
+                    <TaskDescription totalSec={formatToSec(min, sec)} />
                     <span className="description">{date}</span>
                 </label>
-                <button className="icon icon-edit"/>
+                <button className="icon icon-edit" />
                 <button
                     onClick={() => deleteTask(id)}
                     className="icon icon-destroy"
                 />
             </div>
-            <input type="text" className="edit"/>
+            <input type="text" className="edit" />
         </li>
     );
 };
@@ -52,6 +52,8 @@ Task.propTypes = {
     name: PropTypes.string.isRequired,
     deleteTask: PropTypes.func,
     onTaskClick: PropTypes.func,
+    min: PropTypes.number.isRequired,
+    sec: PropTypes.number.isRequired,
 };
 
 export default Task;

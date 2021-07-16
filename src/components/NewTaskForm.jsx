@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class NewTaskForm extends Component {
@@ -40,7 +40,7 @@ export default class NewTaskForm extends Component {
     onLabelSubmit = (e) => {
         e.preventDefault();
         this.props.addTask(this.state.label, this.state.labelMin, this.state.labelSec);
-        this.setState({label: '', labelMin: '', labelSec: ''});
+        this.setState({ label: '', labelMin: '', labelSec: '' });
     };
 
     render() {

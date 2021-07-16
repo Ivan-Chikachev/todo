@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import NewTaskForm from './components/NewTaskForm';
 import Footer from './components/Footer';
@@ -45,7 +45,7 @@ export default class App extends Component {
     });
 
     onTaskClick = (id) => {
-        this.setState(({todoData}) => ({
+        this.setState(({ todoData }) => ({
             todoData: todoData.map((task) => {
                 if (task.id === id) {
                     return {
@@ -59,13 +59,13 @@ export default class App extends Component {
     };
 
     deleteTask = (id) => {
-        this.setState(({todoData}) => ({
+        this.setState(({ todoData }) => ({
             todoData: todoData.filter((i) => i.id !== id),
         }));
     };
 
     addTask = (text, min, sec) => {
-        this.setState(({todoData}) => {
+        this.setState(({ todoData }) => {
             text = text.trim();
             if (text === '') return;
             if (min === '') min = 10;
@@ -78,11 +78,11 @@ export default class App extends Component {
     };
 
     clearCompletedTasks = () => {
-        this.setState(({todoData}) => ({todoData: todoData.filter((i) => i.done === true)}));
+        this.setState(({ todoData }) => ({ todoData: todoData.filter((i) => i.done === true) }));
     };
 
     setFilter = (name) => {
-        this.setState(() => ({filterTasks: name}));
+        this.setState(() => ({ filterTasks: name }));
     };
 
     render() {
@@ -99,7 +99,7 @@ export default class App extends Component {
             <section className="todoapp">
                 <header className="header">
                     <h1>todos</h1>
-                    <NewTaskForm addTask={this.addTask}/>
+                    <NewTaskForm addTask={this.addTask} />
                 </header>
                 <section className="main">
                     <TaskList
