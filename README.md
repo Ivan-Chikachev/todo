@@ -1,3 +1,3 @@
 # Приложение доступно по ссылке 
 
-https://todo-ivanchikachev.vercel.app/
+https://todo-q8y1f31u6-ivanchikachev.vercel.app/
