@@ -1,83 +1,82 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default class NewTaskForm extends Component {
-    state = {
-        label: '',
+const NewTaskForm = ({ addTask }) => {
+    const initialState = {
+        labelName: '',
         labelMin: '',
         labelSec: '',
     };
 
-    static propTypes = {
-        addTask: PropTypes.func,
+    const [labelName, setLabelName] = useState(initialState.labelName);
+    const [labelMin, setLabelMin] = useState(initialState.labelMin);
+    const [labelSec, setLabelSec] = useState(initialState.labelSec);
+
+    const onLabelChangeTitle = (e) => {
+        setLabelName(e.target.value);
     };
 
-    static defaultProps = {
-        addTask: () => {
-        },
+    const onLabelChangeMin = (e) => {
+        const value = e.target.value.replace(/[^\d.]/g, '');
+        setLabelMin(Number(value));
     };
 
-    onLabelChangeTitle = (e) => {
-        this.setState({
-            label: e.target.value,
-        });
+    const onLabelChangeSec = (e) => {
+        const value = e.target.value.replace(/[^\d.]/g, '');
+        setLabelSec(Number(value));
     };
 
-    onLabelChangeMin = (e) => {
-        e.target.value = e.target.value.replace(/[^\d.]/g, '');
-        this.setState({
-            labelMin: e.target.value,
-        });
-    };
-
-    onLabelChangeSec = (e) => {
-        e.target.value = e.target.value.replace(/[^\d.]/g, '');
-        this.setState({
-            labelSec: e.target.value,
-        });
-    };
-
-    onLabelSubmit = (e) => {
+    const onLabelSubmit = (e) => {
         e.preventDefault();
-        this.props.addTask(this.state.label, this.state.labelMin, this.state.labelSec);
-        this.setState({ label: '', labelMin: '', labelSec: '' });
+        addTask(labelName, labelMin, labelSec);
+        setLabelName('');
+        setLabelMin('');
+        setLabelSec('');
     };
+    return (
+        <form
+            action=""
+            onSubmit={onLabelSubmit}
+            className="new-todo-form"
+        >
+            <input
+                onChange={onLabelChangeTitle}
+                className="new-todo"
+                placeholder="What needs to be done?"
+                value={labelName}
+            />
+            <input
+                onChange={onLabelChangeMin}
+                className="new-todo-form__timer"
+                placeholder="Min"
+                value={labelMin}
+                maxLength="3"
+                minLength="1"
+            />
+            <input
+                onChange={onLabelChangeSec}
+                className="new-todo-form__timer"
+                placeholder="Sec"
+                value={labelSec}
+                maxLength="2"
+                minLength="1"
+            />
+            <input
+                type="submit"
+                value="ok"
+                onSubmit={onLabelSubmit}
+            />
+        </form>
+    );
+};
 
-    render() {
-        return (
-            <form
-                action=""
-                onSubmit={this.onLabelSubmit}
-                className="new-todo-form"
-            >
-                <input
-                    onChange={this.onLabelChangeTitle}
-                    className="new-todo"
-                    placeholder="What needs to be done?"
-                    value={this.state.label}
-                />
-                <input
-                    onChange={this.onLabelChangeMin}
-                    className="new-todo-form__timer"
-                    placeholder="Min"
-                    value={this.state.labelMin}
-                    maxLength="3"
-                    minLength="1"
-                />
-                <input
-                    onChange={this.onLabelChangeSec}
-                    className="new-todo-form__timer"
-                    placeholder="Sec"
-                    value={this.state.labelSec}
-                    maxLength="2"
-                    minLength="1"
-                />
-                <input
-                    type="submit"
-                    value="ok"
-                    onSubmit={this.onLabelSubmit}
-                />
-            </form>
-        );
-    }
-}
+NewTaskForm.defaultProps = {
+    addTask: () => {
+    },
+};
+
+NewTaskForm.propTypes = {
+    addTask: PropTypes.func,
+};
+
+export default NewTaskForm;

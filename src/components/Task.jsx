@@ -11,7 +11,6 @@ const Task = ({
 
     let classNameLabel = 'completed';
     if (done) classNameLabel = '';
-
     const formatToSec = (min, sec) => min * 60 + Number(sec);
 
     return (
