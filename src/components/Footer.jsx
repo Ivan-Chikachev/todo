@@ -1,43 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import TasksFilter from './TasksFilter';
+import TodoContext from '../TodoContext';
 
-const Footer = ({
-                    countItems, clearCompletedTasks, filterList, isPressed, setFilter,
-                }) => (
-    <footer className="footer">
-    <span className="todo-count">
-      {countItems}
-        {' '}
-        items left
-    </span>
-        <TasksFilter
-            filterList={filterList}
-            setFilter={setFilter}
-            isPressed={isPressed}
-        />
-        <button
-            onClick={clearCompletedTasks}
-            className="clear-completed"
-        >
-            Clear completed
-        </button>
-    </footer>
-);
-
-Footer.defaultProps = {
-    clearCompletedTasks: () => {
-    },
-    setFilter: () => {
-    },
-};
-
-Footer.propTypes = {
-    countItems: PropTypes.number.isRequired,
-    clearCompletedTasks: PropTypes.func,
-    filterList: PropTypes.arrayOf(PropTypes.string).isRequired,
-    isPressed: PropTypes.string.isRequired,
-    setFilter: PropTypes.func,
+const Footer = () => {
+    const { countItems, clearCompletedTasks } = useContext(TodoContext);
+    return (
+        <footer className="footer">
+            <span className="todo-count">
+                {countItems}
+                {' '}
+                items left
+            </span>
+            <TasksFilter />
+            <button
+                onClick={clearCompletedTasks}
+                className="clear-completed"
+            >
+                Clear completed
+            </button>
+        </footer>
+    );
 };
 
 export default Footer;

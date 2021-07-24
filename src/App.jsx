@@ -3,6 +3,7 @@ import './App.css';
 import NewTaskForm from './components/NewTaskForm';
 import Footer from './components/Footer';
 import TaskList from './components/TaskList';
+import TodoContext from './TodoContext';
 
 const App = () => {
     const initialState = [
@@ -90,29 +91,31 @@ const App = () => {
     const countItems = todoData.filter((i) => i.done === false).length;
 
     return (
-        <section className="todoapp">
-            <header className="header">
-                <h1>todos</h1>
-                <NewTaskForm addTask={addTask} />
-            </header>
-            <section className="main">
-                <TaskList
-                    addTask={addTask}
-                    deleteTask={deleteTask}
-                    onTaskClick={onTaskClick}
-                    todoData={todoData}
-                    filterMap={FILTER_MAP}
-                    filterName={filterTasks}
-                />
-                <Footer
-                    setFilter={setFilter}
-                    isPressed={filterTasks}
-                    clearCompletedTasks={clearCompletedTasks}
-                    countItems={countItems}
-                    filterList={FILTER_NAMES}
-                />
+        <TodoContext.Provider value={{
+            addTask,
+            deleteTask,
+            filterList: FILTER_NAMES,
+            setFilter,
+            isPressed: setFilterTasks,
+            onTaskClick,
+            todoData,
+            filterMap: FILTER_MAP,
+            filterName: filterTasks,
+            countItems,
+            clearCompletedTasks,
+        }}
+        >
+            <section className="todoapp">
+                <header className="header">
+                    <h1>todos</h1>
+                    <NewTaskForm />
+                </header>
+                <section className="main">
+                    <TaskList />
+                    <Footer />
+                </section>
             </section>
-        </section>
+        </TodoContext.Provider>
     );
 };
 

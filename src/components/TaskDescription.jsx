@@ -14,11 +14,7 @@ const TaskDescription = ({ totalSec }) => {
 
     useEffect(() => {
         if (isStart) runTimer();
-    }, [count]);
-
-    useEffect(() => {
-        runTimer();
-    }, [isStart]);
+    }, [count, isStart]);
 
     const playTimer = () => setIsStart(true);
     const pauseTimer = () => setIsStart(false);
@@ -38,9 +34,7 @@ const TaskDescription = ({ totalSec }) => {
         </span>
     );
 };
-
 TaskDescription.propTypes = {
     totalSec: PropTypes.number.isRequired,
 };
-
 export default TaskDescription;

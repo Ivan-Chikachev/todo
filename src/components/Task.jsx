@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import TaskDescription from './TaskDescription';
+import TodoContext from '../TodoContext';
 
 const Task = ({
-                  done, id, name, min, sec, deleteTask, onTaskClick,
-              }) => {
+ done, id, name, min, sec,
+}) => {
+    const { deleteTask, onTaskClick } = useContext(TodoContext);
+
     const date = formatDistanceToNow(Date.now(),
         { includeSeconds: true, addSuffix: true });
 
@@ -38,19 +41,11 @@ const Task = ({
         </li>
     );
 };
-Task.defaultProps = {
-    deleteTask: () => {
-    },
-    onTaskClick: () => {
-    },
-};
 
 Task.propTypes = {
     done: PropTypes.bool.isRequired,
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    deleteTask: PropTypes.func,
-    onTaskClick: PropTypes.func,
     min: PropTypes.number.isRequired,
     sec: PropTypes.number.isRequired,
 };

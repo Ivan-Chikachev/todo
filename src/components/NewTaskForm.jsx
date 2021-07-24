@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
+import TodoContext from '../TodoContext';
 
-const NewTaskForm = ({ addTask }) => {
-    const initialState = {
-        labelName: '',
-        labelMin: '',
-        labelSec: '',
-    };
-
-    const [labelName, setLabelName] = useState(initialState.labelName);
-    const [labelMin, setLabelMin] = useState(initialState.labelMin);
-    const [labelSec, setLabelSec] = useState(initialState.labelSec);
+const NewTaskForm = () => {
+    const [labelName, setLabelName] = useState('');
+    const [labelMin, setLabelMin] = useState('');
+    const [labelSec, setLabelSec] = useState('');
+    const { addTask } = useContext(TodoContext);
 
     const onLabelChangeTitle = (e) => {
         setLabelName(e.target.value);
@@ -68,15 +63,6 @@ const NewTaskForm = ({ addTask }) => {
             />
         </form>
     );
-};
-
-NewTaskForm.defaultProps = {
-    addTask: () => {
-    },
-};
-
-NewTaskForm.propTypes = {
-    addTask: PropTypes.func,
 };
 
 export default NewTaskForm;
